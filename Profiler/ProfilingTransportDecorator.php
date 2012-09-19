@@ -43,7 +43,7 @@ class ProfilingTransportDecorator implements TransportInterface
             $start_time = microtime(true);
         }
 
-        $ret = $action_callable();
+        $ret = $action_callable($this->decoratee);
 
         if ($e) {
             $e->stop();
@@ -66,8 +66,8 @@ class ProfilingTransportDecorator implements TransportInterface
     public function fetchRawObject($sha)
     {
         return $this->performAction(sprintf('gittern.fetchRawObject (%s)', $sha),
-            function() use ($sha) {
-                return $this->decoratee->fetchRawObject($sha);
+            function($decoratee) use ($sha) {
+                return $decoratee->fetchRawObject($sha);
             },
             function($logger, $ret, $time_spent) use ($sha)
             {
@@ -79,8 +79,8 @@ class ProfilingTransportDecorator implements TransportInterface
     public function putRawObject(RawObject $raw_object)
     {
         return $this->performAction(sprintf('gittern.putRawObject (%s)', $raw_object->getSha()),
-            function() use ($raw_object) {
-                return $this->decoratee->putRawObject($raw_object);
+            function($decoratee) use ($raw_object) {
+                return $decoratee->putRawObject($raw_object);
             },
             function($logger, $ret, $time_spent) use ($raw_object)
             {
@@ -92,8 +92,8 @@ class ProfilingTransportDecorator implements TransportInterface
     public function resolveTreeish($treeish)
     {
         return $this->performAction(sprintf('gittern.resolveTreeish (%s)', $treeish),
-            function() use ($treeish) {
-                return $this->decoratee->resolveTreeish($treeish);
+            function($decoratee) use ($treeish) {
+                return $decoratee->resolveTreeish($treeish);
             },
             function($logger, $ret, $time_spent) use ($treeish)
             {
@@ -105,8 +105,8 @@ class ProfilingTransportDecorator implements TransportInterface
     public function resolveHead($head_name)
     {
         return $this->performAction(sprintf('gittern.resolveHead (%s)', $head_name),
-            function() use ($head_name) {
-                return $this->decoratee->resolveHead($head_name);
+            function($decoratee) use ($head_name) {
+                return $decoratee->resolveHead($head_name);
             },
             function($logger, $ret, $time_spent)
             {
@@ -117,8 +117,8 @@ class ProfilingTransportDecorator implements TransportInterface
     public function setBranch($branch, $sha)
     {
         return $this->performAction(sprintf('gittern.setBranch (%s, %s)', $branch, $sha),
-            function() use ($branch, $sha) {
-                return $this->decoratee->setBranch($branch, $sha);
+            function($decoratee) use ($branch, $sha) {
+                return $decoratee->setBranch($branch, $sha);
             },
             function($logger, $ret, $time_spent)
             {
@@ -129,8 +129,8 @@ class ProfilingTransportDecorator implements TransportInterface
     public function removeBranch($branch)
     {
         return $this->performAction(sprintf('gittern.removeBranch (%s)', $branch),
-            function() use ($branch) {
-                return $this->decoratee->removeBranch($branch);
+            function($decoratee) use ($branch) {
+                return $decoratee->removeBranch($branch);
             },
             function($logger, $ret, $time_spent)
             {
@@ -141,8 +141,8 @@ class ProfilingTransportDecorator implements TransportInterface
     public function hasIndexData()
     {
         return $this->performAction('gittern.hasIndexData',
-            function() {
-                return $this->decoratee->hasIndexData();
+            function($decoratee) {
+                return $decoratee->hasIndexData();
             },
             function($logger, $ret, $time_spent)
             {
@@ -153,8 +153,8 @@ class ProfilingTransportDecorator implements TransportInterface
     public function getIndexData()
     {
         return $this->performAction('gittern.getIndexData',
-            function() {
-                return $this->decoratee->getIndexData();
+            function($decoratee) {
+                return $decoratee->getIndexData();
             },
             function($logger, $ret, $time_spent)
             {
@@ -166,8 +166,8 @@ class ProfilingTransportDecorator implements TransportInterface
     public function putIndexData($data)
     {
         return $this->performAction('gittern.putIndexData',
-            function() use ($data) {
-                return $this->decoratee->putIndexData($data);
+            function($decoratee) use ($data) {
+                return $decoratee->putIndexData($data);
             },
             function($logger, $ret, $time_spent) use ($data)
             {
