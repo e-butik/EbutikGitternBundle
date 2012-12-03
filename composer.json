@@ -1,0 +1,23 @@
+{
+    "name": "e-butik/gittern-bundle",
+    "type": "symfony-bundle",
+    "description": "A bundle for using Gittern. (You probably don't want to use this yet, but feel free to look)",
+    "keywords": ["git"],
+    "homepage": "https://github.com/e-butik/EbutikGitternBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Magnus Nordlander",
+            "email": "magnus@e-butik.se",
+            "homepage": "http://www.e-butik.se"
+        }
+    ],
+    "require": {
+        "symfony/symfony": "2.0.x",
+        "e-butik/gittern": "dev-master"
+    },
+    "autoload": {
+        "psr-0": { "Ebutik\\GitternBundle": "" }
+    },
+    "target-dir": "Ebutik/GitternBundle"
+}
