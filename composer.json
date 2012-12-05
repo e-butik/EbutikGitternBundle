@@ -13,7 +13,7 @@
         }
     ],
     "require": {
-        "symfony/symfony": "2.0.x",
+        "symfony/symfony": "2.*",
         "e-butik/gittern": "dev-master"
     },
     "autoload": {
