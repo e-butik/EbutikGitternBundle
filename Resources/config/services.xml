@@ -48,7 +48,7 @@
             <argument />
         </service>
 
-        <service id="gittern.repository.transport.real" class="gittern.repository.transport.real.class" public="false">
+        <service id="gittern.repository.transport.real" class="%gittern.repository.transport.real.class%" public="false">
             <argument>%gittern.repository.transport.real.path%</argument>
         </service>
     </services>
