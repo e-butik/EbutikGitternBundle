@@ -14,7 +14,7 @@
     ],
     "require": {
         "symfony/symfony": "2.*",
-        "e-butik/gittern": "dev-master"
+        "e-butik/gittern": "*"
     },
     "autoload": {
         "psr-0": { "Ebutik\\GitternBundle": "" }
