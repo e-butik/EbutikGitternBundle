@@ -78,4 +78,14 @@ class CachingTransportDecorator implements TransportInterface
     {
         return $this->decoratee->putIndexData($data);
     }
+
+    public function resolveTag($tag)
+    {
+        return $this->decoratee->resolveTag($data);
+    }
+
+    public function hasTag($tag)
+    {
+        return $this->decoratee->hasTag($data);
+    }
 }

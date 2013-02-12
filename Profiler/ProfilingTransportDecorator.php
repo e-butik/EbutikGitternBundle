@@ -176,6 +176,16 @@ class ProfilingTransportDecorator implements TransportInterface
         );
     }
 
+    public function resolveTag($tag)
+    {
+        return $this->decoratee->resolveTag($tag);
+    }
+
+    public function hasTag($tag)
+    {
+        return $this->decoratee->hasTag($data);
+    }
+
     public function setStopwatch(Stopwatch $stopwatch = null)
     {
         $this->stopwatch = $stopwatch;
