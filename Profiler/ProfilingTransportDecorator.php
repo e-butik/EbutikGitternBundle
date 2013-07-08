@@ -4,7 +4,7 @@ namespace Ebutik\GitternBundle\Profiler;
 
 use Gittern\Transport\TransportInterface;
 use Gittern\Transport\RawObject;
-use Symfony\Component\HttpKernel\Debug\Stopwatch;
+use Symfony\Component\Stopwatch\Stopwatch;
 use Ebutik\GitternBundle\Tools\StopwatchableTrait;
 
 /**
@@ -47,7 +47,7 @@ class ProfilingTransportDecorator implements TransportInterface
 
         if ($e) {
             $e->stop();
-            $time_spent = $e->getTotalTime();
+            $time_spent = $e->getDuration();
         }
         else
         {
